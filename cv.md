@@ -40,7 +40,70 @@ But I can give link to me study application - the [game '4-in-line'](https://fou
 
 All codes samples are posted in my [GitHub repositories](https://github.com/IgorBarbashov?tab=repositories).
 
+Below is part of the code one of the training projects
+```javascript
+import React, { Component, PureComponent } from 'react';
+import ReactDOM from 'react-dom';
+import {
+  observable,
+  computed,
+  extendObservable,
+  configure,
+  action,
+  decorate,
+  runInAction,
+} from 'mobx';
+import { observer } from 'mobx-react';
 
+configure({ enforceActions: 'observed' });
+
+type UserInterface = {
+  login: { username: string };
+} | null;
+
+class Store {
+  public user: UserInterface = null;
+
+  public getUser(): void {
+    fetch('https://randomuser.me/api/')
+      .then(res => res.json())
+      .then(json => {
+        if (json.results) {
+          const [newUser] = json.results;
+          runInAction(() => {
+            this.user = newUser;
+          });
+        }
+      })
+      .catch(error => {});
+  }
+}
+
+decorate(Store, {
+  user: observable,
+  getUser: action.bound,
+});
+
+const appStore = new Store();
+
+@observer
+class App extends PureComponent<{ store: Store }, {}> {
+  public render(): JSX.Element {
+    const { store } = this.props;
+
+    return (
+      <div>
+        <div>{`User: ${store.user ? store.user.login.username : ''}`}</div>
+        <button onClick={store.getUser} type="button">
+          New user
+        </button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App store={appStore} />, document.getElementById('root'));
+```
 
 ## Experience
 My developer experience - 10 month. I was zero knowledge when I came to frontend developers courses, which was organized by one of Nizhny Novgorod IT-company. Before the courses end, I was invited to a job as junior frontend developer.
