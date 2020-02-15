@@ -1,0 +1,187 @@
+:root {
+  --white: #ffffff;
+  --blue: #499bea;
+  --darkgrey: #555555;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-width: 320px;
+
+  font-family: "Manjari", "Arial", sans-serif;
+}
+
+header {
+  padding-top: 10px;
+
+  background: var(--blue);
+  background: linear-gradient(to bottom, #499bea 0%, #207ce5 100%);
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.person {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+
+  color: var(--white);
+}
+
+.person__image {
+  max-height: 200px;
+
+  border-radius: 50%;
+}
+
+.person__contacts {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin-left: 30px;
+}
+
+.person__vacancy {
+  margin: 0;
+
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.person__name {
+  margin: 0;
+
+  font-size: 30px;
+}
+
+.person__extra-information {
+  padding-top: 10px;
+
+  line-height: 150%;
+}
+
+.person__nav ul {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}
+
+.person__nav li {
+  display: inline-block;
+  padding-left: 20px;
+}
+
+.person__nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  color: var(--darkgrey);
+  font-size: 18px;
+}
+
+main .container {
+  padding: 0 10px;
+}
+
+main h2 {
+  margin-top: 30px;
+}
+
+main p {
+  margin-top: 20px;
+}
+
+main a {
+  color: var(--blue);
+}
+
+main a:hover {
+  color: var(--darkgrey);
+}
+
+.skills {
+  width: 80%;
+}
+
+.skills li {
+  display: inline-block;
+  margin-left: 40px;
+
+  line-height: 150%;
+}
+
+.skills li:before {
+  content: "";
+  position: absolute;
+
+  display: list-item;
+
+  line-height: 130%;
+}
+
+.education ul {
+  margin-left: 40px;
+}
+
+footer {
+  margin-top: 30px;
+
+  background: var(--blue);
+  background: linear-gradient(to bottom, #207ce5 0%, #499bea 100%);
+}
+
+.footer__icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.icon__email,
+.icon__skype,
+.icon__fb,
+.icon__te,
+.icon__vk,
+.icon__git {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  margin: 20px 10px;
+}
+
+.icon__email-svg,
+.icon__skype-svg,
+.icon__fb-svg,
+.icon__te-svg,
+.icon__vk-svg,
+.icon__git-svg {
+  width: 40px;
+
+  transition: width 0.3s;
+}
+
+.icon__email-svg:hover,
+.icon__skype-svg:hover,
+.icon__fb-svg:hover,
+.icon__te-svg:hover,
+.icon__vk-svg:hover,
+.icon__git-svg:hover {
+  width: 50px;
+}
